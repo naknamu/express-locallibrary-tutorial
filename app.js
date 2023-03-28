@@ -6,11 +6,12 @@ var logger = require('morgan');
 const mongoose = require('mongoose');
 const compression = require("compression");
 const helmet = require("helmet");
+require('dotenv').config();
 
 mongoose.set('strictQuery', false);
 
 //define database url to connect to.
-const dev_db_url = "mongodb+srv://admin:mdn189@cluster0.crffuel.mongodb.net/local_library?retryWrites=true&w=majority";
+const dev_db_url = `mongodb+srv://${process.env.USER_KEY}:${process.env.PW_KEY}@cluster0.crffuel.mongodb.net/local_library?retryWrites=true&w=majority`;
 const mongoDB = process.env.MONGODB_URI || dev_db_url;
 
 //wait for database to connect, logging an error if there is a problem
